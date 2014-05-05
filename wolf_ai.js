@@ -59,9 +59,9 @@ var packLeader = {
 };
 
 var wolves = [];
-function makeWolves() {
+function makeWolves(max) {
   var i;
-  for (i = 0; i < 4; i+= 1) {
+  for (i = 0; i < max; i+= 1) {
     var id = i
     wolves.push({
       listener: function (id, packLeader) {
@@ -73,7 +73,7 @@ function makeWolves() {
   }
 }
 
-makeWolves();
+makeWolves(4);
 makeLeader(packLeader);
 console.log("Wolves created: " + wolves.length);
 packLeader.addToPack(wolves[1].listener);
