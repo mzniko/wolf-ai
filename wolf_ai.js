@@ -73,4 +73,4 @@ packLeader.backAway();
 packLeader.runAway();
 packLeader.kill("peasant");
 
-phantomjs.exit();
+phantom.exit();
