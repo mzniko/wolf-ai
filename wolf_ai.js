@@ -58,14 +58,25 @@ var packLeader = {
   }
 };
 
-var wolf = {
-  idle: function (packLeader) {
-    console.log("I should " + packLeader);
+var wolves = [];
+function makeWolves() {
+  var i;
+  for (i = 0; i < 4; i+= 1) {
+    wolves.push({
+      id: i,
+      listener: function (packLeader) {
+        console.log("I am wolf #" + this.id + ", I should " + packLeader);
+        }
+    });
   }
-};
+}
 
+makeWolves();
 makeLeader(packLeader);
-packLeader.addToPack(wolf.idle);
+console.log("Wolves created: " + wolves.length);
+packLeader.addToPack(wolves[1].listener);
+packLeader.addToPack(wolves[2].listener);
+console.log("Wolves in the pack: " + packLeader.wolves.any);
 
 packLeader.stalk("poor peasant fellow");
 packLeader.stalk("woman near the tree");

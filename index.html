@@ -31,7 +31,7 @@ function create() {
   game.world.setBounds(0, 0, 1600, 1600);
   map = game.add.tilemap('tilemap');
   map.addTilesetImage('RPGtiles_sheet', 'tiles');
-  layer = map.createLayer('Tile Layer 1');
+  layer = map.createLayer('tilelayer_1');
   layer.resizeWorld();
 
   game.physics.startSystem(Phaser.Physics.P2JS);
