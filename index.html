@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Chased by wolves</title>
+	<script type="text/javascript" src="js/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+function preload() {
+  game.load.spritesheet('player', 'assets/chainmail_leather.png', 64, 64);
+  game.load.image('tiles', 'assets/RPGtiles_sheet.png');
+  game.load.tilemap('tilemap', 'assets/tilemap.json', null, Phaser.Tilemap.TILED_JSON);
+}
+
+var player;
+var fixed;
+var cursors;
+var facing;
+
+function create() {
+  game.world.setBounds(0, 0, 1600, 1600);
+  map = game.add.tilemap('tilemap');
+  map.addTilesetImage('RPGtiles_sheet', 'tiles');
+  layer = map.createLayer('Tile Layer 1');
+  layer.resizeWorld();
+
+  game.physics.startSystem(Phaser.Physics.P2JS);
+
+  // fixed = game.add.sprite(300,320, 'player');
+  // fixed.fixedToCamera = true;
+  // fixed.cameraOffset.x = 300;
+  // fixed.cameraOffset.y = 300;
+
+  player = game.add.sprite(150,320, 'player');
+  // player.animations.add('all');
+  // player.animations.play('all', 15, true);
+  player.animations.add('left', [9,10,11,12,13,14,15,16,17], 10, true);
+  player.animations.add('right', [27,28,29,30,31,32,33,34,35], 10, true);
+  player.animations.add('up', [0,1,2,3,4,5,6,7,8], 10, true);
+  player.animations.add('down', [18,19,20,21,22,23,24,25,26], 10, true);
+
+  game.physics.p2.enable(player, false);
+
+  cursors = game.input.keyboard.createCursorKeys();
+
+  game.camera.follow(player);
+}
+
+function update() {
+  player.body.setZeroVelocity();
+
+    if (cursors.left.isDown)
+    {
+        player.body.velocity.x = -150;
+
+        if (facing != 'left')
+        {
+            player.animations.play('left');
+            facing = 'left';
+        }
+    }
+    else if (cursors.right.isDown)
+    {
+        player.body.velocity.x = 150;
+
+        if (facing != 'right')
+        {
+            player.animations.play('right');
+            facing = 'right';
+        }
+    }
+    else if (cursors.up.isDown)
+    {
+        player.body.velocity.y = -150;
+
+        if (facing != 'up')
+        {
+            player.animations.play('up');
+            facing = 'up';
+        }
+    }
+    else if (cursors.down.isDown)
+    {
+        player.body.velocity.y = 150;
+
+        if (facing != 'down')
+        {
+            player.animations.play('down');
+            facing = 'down';
+        }
+    }
+    else
+    {
+        if (facing != 'idle')
+        {
+            player.animations.stop();
+
+            if (facing == 'left')
+            {
+                player.frame = 10;
+            }
+            else if (facing == 'right')
+            {
+                player.frame = 27;
+            }
+            else if (facing == 'up')
+            {
+                player.frame = 0;
+            }
+            else if (facing == 'down')
+            {
+                player.frame = 18;
+            }
+
+            facing = 'idle';
+        }
+    }
+
+}
+
+function render() {
+
+}
+
+</script>
+
+</body>
+</html>

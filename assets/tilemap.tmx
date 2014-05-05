@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="RPGtiles_sheet" tilewidth="64" tileheight="64">
+  <image source="../../kenneyDonation_v5/Art (4550 files)/Previews (145 assets)/RPG tiles pack (70 assets)/Spritesheet/RPGtiles_sheet.png" width="704" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztVe0KgCAM1An2/m8cQoKMm5t4EkQ/DkbGdh+uckopEyHkfgwUMmevn/fOKY+svpF5xah3fUCoCidybn2vB3XCVYw6qmOcwc6zBL0SwH2mBZ11LWwNI7RP3o54eaDs3tCxyltnrGuUeWTX0Fz0rN+r6N1d2XNROrwZUa8sDtZ+ML6/rP/CrsZdXj++jRubBwOH
+  </data>
+ </layer>
+ <imagelayer name="Image Layer 1" width="25" height="25"/>
+</map>
