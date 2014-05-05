@@ -62,11 +62,13 @@ var wolves = [];
 function makeWolves() {
   var i;
   for (i = 0; i < 4; i+= 1) {
+    var id = i
     wolves.push({
-      id: i,
-      listener: function (packLeader) {
-        console.log("I am wolf #" + this.id + ", I should " + packLeader);
+      listener: function (id, packLeader) {
+        return function (packLeader) {
+          console.log("I am wolf #" + id + ", I should " + packLeader);
         }
+      }(id)
     });
   }
 }
